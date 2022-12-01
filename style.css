@@ -1,0 +1,78 @@
+:root {
+    --v: calc(.5vw + .5vh);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgb(42, 53, 42);
+}
+
+.start-speech-recognition {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15vmin;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    background: linear-gradient(to bottom right, rgb(0, 89, 255), rgb(2, 184, 42), rgb(184, 1, 184));
+    background-size: 300%;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    margin-inline: calc(2 * var(--v));
+}
+
+.start-speech-recognition:hover {
+    background-position: 100%;
+}
+
+.start-speech-recognition::before {
+    content: '';
+    z-index: -1;
+    height: 0;
+    border-radius: 100%;
+    transition: inherit;
+    aspect-ratio: 1/1;
+    background-color: orange;
+}
+
+.start-speech-recognition[recognising]::before {
+    height: 17vmin;
+}
+
+.start-speech-recognition>img {
+    position: fixed;
+    width: 10vmin;
+}
+
+.language-selector {
+    font-size: calc(3 * var(--v));
+    padding: calc(2 * var(--v));
+    border-radius: var(--v);
+}
+
+.bottom-bar {
+    display: flex;
+    width: 100vw;
+    height: calc(30vh - 4 * var(--v));
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#output {
+    display: flex;
+    margin: var(--v) auto;
+    width: 95vw;
+    height: 70vh;
+    background-color: darkgray;
+    border-radius: calc(var(--v) * 2);
+    padding: var(--v);
+    font-size: calc(1.5 * var(--v));
+}
