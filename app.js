@@ -7,6 +7,8 @@ let isRecognising = false;
 speechRecognition.addEventListener('result', speechRecognised);
 speechRecognition.addEventListener('end', speechRecognitionEnd);
 
+document.querySelector('.copy-btn').addEventListener('click', copyOutput);
+
 startRecognisingBtn.addEventListener('click', () => {
     speechRecognition.lang = language.value;
     isRecognising = !isRecognising;
@@ -30,4 +32,9 @@ function speechRecognised(res) {
 function speechRecognitionEnd() {
     startRecognisingBtn.removeAttribute('recognising');
     isRecognising = false;
+}
+
+function copyOutput() {
+    navigator.clipboard.writeText(out.value);
+    alert('Text Copied');
 }
